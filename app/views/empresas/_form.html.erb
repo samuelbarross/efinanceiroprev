@@ -1,0 +1,84 @@
+<%- model_class = Empresa -%>
+<%= form_for(@empresa, html: { class: "form-horizontal", role: "form", name: "form"  }) do |f| %>
+  <% if @empresa.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@empresa.errors.count, "error") %> prohibited this empresa from being saved:</h2>
+      <ul>
+      <% @empresa.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="row">
+    <div class="ibox-content">
+      <form method="get" class="form-horizontal">
+          <div class="form-group">
+            <%= f.label :pessoa_fisica, class: "col-md-2 control-label" %>
+            <div class="col-md-10">
+                <%= f.check_box :pessoa_fisica, class: "check_pj_pf" %>
+            </div>
+          </div>
+          <div class="hr-line-dashed"></div>
+          <div class="form-group">
+            <%= f.label :cpf_cnpj, class: "col-md-2 control-label" %>
+            <div class="col-md-10">
+                <%= f.text_field :cpf_cnpj, class: "form-control txt_cnpj_cpf", required: true %>
+            </div>
+          </div>
+          <div class="hr-line-dashed"></div>
+          <div class="form-group">
+            <%= f.label :nome, class: "col-md-2 control-label" %>
+            <div class="col-md-10">
+                <%= f.text_field :nome, class: "form-control", required: true %>
+            </div>
+          </div>
+          <div class="hr-line-dashed"></div>
+          <div class="form-group">
+            <%= f.label :caminho_certificado, class: "col-md-2 control-label" %>
+            <div class="col-md-10">
+                <%= f.text_field :caminho_certificado, class: "form-control", required: true %>
+            </div>
+          </div>
+          <div class="hr-line-dashed"></div>
+          <div class="form-group">
+            <%= f.label :senha_certificado, class: "col-md-2 control-label" %>
+            <div class="col-md-10">
+                <%= f.text_field :senha_certificado, class: "form-control", required: true %>
+            </div>
+          </div>
+          <div class="hr-line-dashed"></div>
+
+        <div class="form-group">
+          <div class="col-sm-4">
+            <%= f.submit "Salvar", :class => 'btn btn-primary' %>
+            <%= link_to 'Voltar', empresas_path, :class => 'btn btn-white' %>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <br />
+<% end %>
+
+<script language="javascript" type="text/javascript">   
+  $(document).ready(function() {
+    
+    if ($('.check_pj_pf').is(":checked")) {
+      $('.txt_cnpj_cpf').inputmask("999.999.999-99");
+    } else {
+      $('.txt_cnpj_cpf').inputmask("99.999.999/9999-99");
+    }
+
+    $('.check_pj_pf').change(function(){
+      if ($('.check_pj_pf').is(":checked")) {
+        $('.txt_cnpj_cpf').val('');
+        $('.txt_cnpj_cpf').inputmask("999.999.999-99");
+      } else {
+        $('.txt_cnpj_cpf').val('');
+        $('.txt_cnpj_cpf').inputmask("99.999.999/9999-99");
+      };
+    });
+
+  });
+</script> 

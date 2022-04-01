@@ -1,0 +1,43 @@
+<div class="field">
+ <div class="row">
+   <div class="control-group col-sm-3" style: "text-align: left;">
+   <div class: "col-sm-4 control-label", style: "text-align: left;" >
+     Campo
+   </div>
+   <div class="input-group date col-sm-4">
+   <%= f.attribute_fields do |a| %>
+     <%= a.attribute_select associations: [:category] %>
+   <% end %>
+   </div>
+ </div>
+
+  <div class="control-group col-sm-3" style: "text-align: left;">
+   <div class: "col-sm-4 control-label", style: "text-align: left;" >
+     Filtro
+   </div>
+   <div class="input-group date col-sm-4">
+     <%= f.predicate_select only:[:gteq,:lteq,:eq,:cont]%>
+   </div>
+ </div>
+
+ <div class="control-group col-sm-3" style: "text-align: left;">
+   <div class: "col-sm-2 control-label", style: "text-align: left;" >
+     Valor
+   </div>
+   <div class="input-group date col-sm-3">
+   <%= f.value_fields do |v| %>
+       <%= v.text_field :value %>
+   <% end %>
+   </div>
+ </div>
+
+ <div class="control-group col-sm-1" style: "text-align: left;">
+   <div class: "col-sm-1 control-label", style: "text-align: left;" >
+     &nbsp;
+   </div>
+   <div class="input-group date col-sm-1">
+     <%= link_to "", '#', class: "remove_fields btn btn-xs label-danger fa fa-trash-o" %>
+   </div>
+ </div>
+ </div>
+</div>

@@ -1,0 +1,44 @@
+<% if user_signed_in? %>
+    <div class="row border-bottom white-bg">
+        <nav class="navbar navbar-static-top" role="navigation">
+            <div class="navbar-header">
+                <button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
+                    <i class="fa fa-reorder"></i>
+                </button>
+                <a href="#" class="navbar-brand">E-Financeira Previdência</a>
+            </div>
+            <div class="navbar-collapse collapse" id="navbar">
+                <ul class="nav navbar-nav">
+                    <li class="active">
+                        <a aria-expanded="false" role="button" href="<%= url_for :controller => 'devise/registrations', :action => 'edit' %>"><%= current_user.email %></a>
+                    </li>
+                    <li>
+                        <a aria-expanded="false" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-th-large"></i> Cadastros <span class="caret"></span></a>
+                        <ul role="menu" class="dropdown-menu">
+                            <li><a href="<%= empresas_path %>"><i class="fa fa-university"></i>Empresas</a></li>
+                            <li><a href="<%= users_path %>"><i class="fa fa-users"></i> Usuários </a></li>
+                            <li><a href="<%= xml_templates_path %>"><i class="fa fa-pencil-square-o"></i> Configurações </a></li>
+                        </ul>
+                    </li>  
+                    <li>
+                        <a aria-expanded="false" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-cog"></i> Movimentos <span class="caret"></span></a>
+                        <ul role="menu" class="dropdown-menu">
+                            <li><a href="<%= movimentos_path %>"><i class="fa fa-cogs"></i> Movimentar </a></li>                  
+                        </ul>
+                    </li>
+                    <li>
+                        <a aria-expanded="false" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-search"></i> Consultas <span class="caret"></span></a>
+                        <ul role="menu" class="dropdown-menu">
+                            <li><a href="<%= cadastro_declarante_path %>"><i class="fa fa-folder-open-o"></i> Cadastro Declarante </a></li>
+                            <li><a href="<%= informacoes_movimento_path %>"><i class="fa fa-folder-open-o"></i> Movimentação </a></li>
+                            <li><a href="<%= lista_eFinanceira_path %>"><i class="fa fa-folder-open-o"></i> Lista E-Financeira </a></li>
+                        </ul>
+                    </li>                                                               
+                </ul>
+                <ul class="nav navbar-top-links navbar-right">
+                    <li><%= link_to 'Log out', destroy_user_session_path, method: :delete, class: "fa fa-sign-out" %></li>
+                </ul>
+            </div>   
+        </nav>
+    </div>
+<% end %>

@@ -1,0 +1,265 @@
+<%= form_tag(consultar_informacoes_movimento_path, method: :get, class: "form-horizontal") do %>
+  <div class="row wrapper border-bottom white-bg page-heading">
+	<div class="col-lg-10">
+		<h2>Consultar Informações do Movimento</h2>
+		<ol class="breadcrumb">
+			<li><a href="<%= url_for :controller => 'home', :action => 'index' %>">Home</a></li>
+			<li class="active"><strong>Informações do Movimento</strong></li>
+		</ol>
+	</div>
+	<div class="col-lg-2"></div>
+  </div>  
+  <div class="row">
+	<div class="ibox-content">
+		<fieldset>
+			<legend>
+				<div class="form-group">
+					<div class="col-sm-4">
+						<%= submit_tag 'Buscar', class: "btn btn-primary" %>
+					</div>
+				</div>				
+			</legend>  
+
+				<div class="form-group">
+				  <label class="col-md-2 control-label" >Ambiente:</label>
+				  <div class="col-md-10">
+						<select name="drop_tp_ambiente" class="form-control" required="true" >
+							<% if @drop_tp_ambiente.presence %>     
+								<% if @drop_tp_ambiente == "1" %>           
+									<option value="1" selected>Produção</option>
+									<option value="2">Homologação</option> 
+								<% end %>
+								<% if @drop_tp_ambiente == "2" %>           
+									<option value="1">Produção</option>
+									<option value="2" selected>Homologação</option> 
+								<% end %>
+							<% else %>									
+								<option value="1">Produção</option>
+								<option value="2">Homologação</option> 
+							<% end %>
+						</select> 						
+				  </div>
+				</div>
+
+				<div class="hr-line-dashed"></div>
+
+			<div class="form-group">
+				<label class="col-md-2 control-label" >CNPJ da Empresa Declarante:</label>
+				<div class="col-md-10">
+					<input type="text" name="txt_cnpj", class="form-control", required="true" value="<%= @cnpj %>" placeholder="parâmetro de envio">
+				</div>
+			</div>
+
+			<div class="hr-line-dashed"></div>
+
+			<div class="form-group">
+				<label class="col-md-2 control-label" >Situação da Informação:</label>
+				<div class="col-md-10">
+					<select name="drop_situacao_informacao" class="form-control" required="true" value="<%= @drop_situacao_informacao %>" >
+						<% if @drop_situacao_informacao.presence %>
+						<% if @drop_situacao_informacao == "0" %>
+						<option value="0" selected>Todas</option>
+						<option value="1">Ativo</option>
+						<option value="2">Retificado</option>
+						<option value="3">Excluído</option>                                                      
+						<% end %>
+						<% if @drop_situacao_informacao == "1" %>
+						<option value="0">Todas</option>
+						<option value="1" selected>Ativo</option>
+						<option value="2">Retificado</option>
+						<option value="3">Excluido</option>                           
+						<% end %>                     
+						<% if @drop_situacao_informacao == "2" %>
+						<option value="0">Todas</option>
+						<option value="1">Ativo</option>                        
+						<option value="2" selected>Retificado</option>
+						<option value="3">Excluido</option>
+						<% end %> 
+						<% if @drop_situacao_informacao == "3" %>
+						<option value="0">Todas</option>
+						<option value="1">Ativo</option>
+						<option value="2">Retificado</option>                           
+						<option value="3" selected>Excluido</option>
+						<% end %> 
+						<% else %>
+						<option value="0">Todas</option>
+						<option value="1">Ativo</option>
+						<option value="2">Retificado</option>
+						<option value="3">Excluido</option>
+						<% end %> 
+					</select>                                    
+				</div>
+			</div>
+
+			<div class="hr-line-dashed"></div>
+
+			<div class="form-group">
+				<label class="col-md-2 control-label" >Ano/Mês inicial das informações:</label>
+				<div class="col-md-10">
+					<input type="text" name="txt_ano_mes_inicial" class="form-control datepicker" value="<%= @ano_mes_inicial %>" required="true" placeholder="parâmetro de envio">
+				</div>
+			</div>
+
+			<div class="hr-line-dashed"></div>
+
+			<div class="form-group">
+				<label class="col-md-2 control-label" >Ano/Mês final das informações:</label>
+				<div class="col-md-10">
+					<input type="text" name="txt_ano_mes_final" class="form-control datepicker" value="<%= @ano_mes_final %>" required="true"  placeholder="parâmetro de envio" >
+				</div>
+			</div>
+
+			<div class="hr-line-dashed"></div>         
+
+			<div class="form-group">
+				<label class="col-md-2 control-label" >Tipo de Movimento:</label>
+				<div class="col-md-10">
+					<select name="drop_tp_movimento" class="form-control" required="true" >
+						<% if @drop_tp_movimento.presence %>                
+							<% if @drop_tp_movimento == "1" %>
+								<option value="1" selected>Previdência Privada</option>
+								<option value="2">Operações Financeiras</option>                                                    
+							<% end %>
+							<% if @drop_tp_movimento == "2" %>
+								<option value="1">Previdência Privada</option>                            
+								<option value="2" selected>Operações Financeiras</option>
+							<% end %>                     
+						<% else %>
+							<option value="1">Previdência Privada</option>
+							<option value="2">Operações Financeiras</option>
+						<% end %> 
+					</select>                   
+				</div>
+			</div>
+
+			<div class="hr-line-dashed"></div>        
+
+			<div class="form-group">
+				<label class="col-md-2 control-label" >Tipo de NI:</label>
+				<div class="col-md-10">
+					<select name="drop_tp_ni", class="form-control" required="true" >                          
+						<% if @drop_tp_ni.presence %>                
+						<% if @drop_tp_ni == "1" %>
+						<option value="1" selected>CPF</option>
+						<option value="2">CNPJ</option>
+						<option value="3">NIF Pessoa Física</option>
+						<option value="4">NIF Pessoa Jurídica</option>
+						<option value="5">Passaporte</option>                            
+						<% end %>
+						<% if @drop_tp_ni == "2" %>
+						<option value="1">CPF</option>                        
+						<option value="2" selected>CNPJ</option>
+						<option value="3">NIF Pessoa Física</option>
+						<option value="4">NIF Pessoa Jurídica</option>
+						<option value="5">Passaporte</option>                            
+						<% end %>     
+						<% if @drop_tp_ni == "3" %>
+						<option value="1">CPF</option>                       
+						<option value="2">CNPJ</option> 
+						<option value="3" selected>NIF Pessoa Física</option>
+						<option value="4">NIF Pessoa Jurídica</option>
+						<option value="5">Passaporte</option>                            
+						<% end %> 
+						<% if @drop_tp_ni == "4" %>
+						<option value="1">CPF</option>                       
+						<option value="2">CNPJ</option> 
+						<option value="3">NIF Pessoa Jurídica</option>
+						<option value="4" selected="<%= @drop_situacao_informacao %>">NIF Pessoa Jurídica</option>
+						<option value="5">Passaporte</option>                            
+						<% end %>
+						<% if @drop_tp_ni == "5" %>
+						<option value="1">CPF</option>                       
+						<option value="2">CNPJ</option> 
+						<option value="3">NIF Pessoa Jurídica</option>
+						<option value="4">NIF Pessoa Jurídica</option>                            
+						<option value="5" selected>Passaporte</option>
+						<% end %>                        
+						<% else %>
+						<option value="1">CPF</option>
+						<option value="2">CNPJ</option>
+						<option value="3">NIF Pessoa Física</option>
+						<option value="4">NIF Pessoa Jurídica</option>
+						<option value="5">Passaporte</option> 
+						<% end %> 
+
+					</select>                    
+				</div>
+			</div>
+
+			<div class="hr-line-dashed"></div>      
+
+			<div class="form-group">
+				<label class="col-md-2 control-label" >Identificação do Declarado - NI:</label>
+				<div class="col-md-10">
+					<input type="text" name="txt_ni" class="form-control" value="<%= @ni %>" required="true" placeholder="parâmetro de envio" >
+				</div>
+			</div>
+		</fieldset>
+		<fieldset>
+			<legend>Retorno</legend>
+			<div class="row">
+			  <div class="col-lg-12">
+			     <div class="panel blank-panel">
+			        <div class="panel-heading">
+			           <div class="panel-options">
+			              <ul class="nav nav-tabs">
+			                 <li class="active"><a data-toggle="tab" href="#tab-1">Movimentos</a></li>
+			              </ul>
+			           </div>
+			        </div>
+			        <div class="panel-body">
+			           <div class="tab-content">
+			              <div id="tab-1" class="tab-pane active">
+			                 <table class="table table-bordered">
+			                    <thead>
+			                        <tr>  
+			                          <th>Tipo Movimento</th>
+			                          <th>Tipo NI</th>
+			                          <th>NI</th>
+			                          <th>Ano/Mês-Caixa</th>
+			                          <th>Situação</th>
+			                          <th>Nr. Recibo</th>
+			                          <th>ID</th>
+			                       </tr>
+			                    </thead>
+			                    <tbody>
+			                          <% @movimentos.each_index do |x| %>
+			                             <tr class="fields">
+			                                 <td><%= @movimentos[x][:tp_movimento] %></td>
+			                                 <td><%= @movimentos[x][:tpo_ni] %></td>
+			                                 <td><%= @movimentos[x][:ni] %></td>
+			                                 <td><%= @movimentos[x][:ano_mes_caixa] %></td>
+			                                 <td><%= @movimentos[x][:situacao] %></td>
+			                                 <td><%= @movimentos[x][:nr_recibo] %></td>
+			                                 <td><%= @movimentos[x][:id] %></td>
+			                             </tr>
+			                          <% end %>
+			                    </tbody>
+			                 </table>
+			              </div>
+			           </div>
+			        </div>
+			     </div>
+			  </div>
+			</div>
+		</fieldset>
+		<div class="hr-line-dashed"></div>
+	</div>
+  </div>
+<% end %>    
+
+<script language="javascript" type="text/javascript">  	
+ 	$(document).ready(function() {
+	  $('.datepicker').datepicker({
+	      // format: 'dd/mm/yyyy 00:00:00',
+	      format: 'yyyy/mm',
+	      todayBtn: 'linked',
+	      keyboardNavigation: false,
+	      forceParse: false,
+	      calendarWeeks: true,
+	      autoclose: true,
+	      language: "pt-BR"
+	    });
+   });
+
+</script> 	

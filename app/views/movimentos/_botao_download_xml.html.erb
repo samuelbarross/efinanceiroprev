@@ -1,0 +1,3 @@
+<% if movimento.arquivo_retorno.presence %> 
+	<%= link_to '', download_xml_movimentos_path(movimento), remote: true, class: "fa fa-download", 'data-toggle' => 'tooltip', title: 'Download Xml' %>
+<% end %>	

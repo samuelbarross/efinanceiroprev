@@ -1,0 +1,111 @@
+<%= form_tag(consultar_informacoes_cadastrais_path, method: :get, class: "form-horizontal") do %>
+	 <div class="row wrapper border-bottom white-bg page-heading">
+		  <div class="col-lg-10">
+				<h2>Consultar Cadastro do Declarante </h2>
+				<ol class="breadcrumb">
+					 <li><a href="<%= url_for :controller => 'home', :action => 'index' %>">Home</a></li>
+					 <li class="active"><strong>Consultas</strong></li>
+				</ol>
+		  </div>
+		  <div class="col-lg-2"></div>
+	 </div>  
+	 <div class="row">
+		<div class="ibox-content">
+		  <fieldset>
+			 <legend>
+				 <div class="form-group">
+					<div class="col-sm-4">
+					  <%= submit_tag 'Buscar', class: "btn btn-primary" %>
+					</div>
+				 </div>			 	
+			 </legend>  
+
+				<div class="form-group">
+				  <label class="col-md-2 control-label" >Ambiente:</label>
+				  <div class="col-md-10">
+						<select name="drop_tp_ambiente" class="form-control" required="true" >
+							<% if @drop_tp_ambiente.presence %>     
+								<% if @drop_tp_ambiente == "1" %>           
+									<option value="1" selected>Produção</option>
+									<option value="2">Homologação</option> 
+								<% end %>
+								<% if @drop_tp_ambiente == "2" %>           
+									<option value="1">Produção</option>
+									<option value="2" selected>Homologação</option> 
+								<% end %>
+							<% else %>									
+								<option value="1">Produção</option>
+								<option value="2">Homologação</option> 
+							<% end %>
+						</select> 						
+				  </div>
+				</div>
+
+				<div class="hr-line-dashed"></div>
+
+				<div class="form-group">
+				  <label class="col-md-2 control-label" >CNPJ da Empresa Declarante:</label>
+				  <div class="col-md-10">
+						<input type="text" name="txt_cnpj" class="form-control" required="true" value="<%= @cnpj %>" placeholder="parâmetro de envio">
+				  </div>
+				</div>
+		  </fieldset>
+				
+		  <fieldset>
+			 <legend>Retorno</legend>  
+				<div class="form-group">
+				  <label class="col-md-2 control-label">Nome:</label>
+				  <div class="col-md-10">
+						<input type="text" name="txt_nome" class="form-control" value="<%= @nome %>" >
+				  </div>
+				</div>
+
+				<div class="hr-line-dashed"></div>
+
+				<div class="form-group">
+				  <label class="col-md-2 control-label">Endereço:</label>
+				  <div class="col-md-10">
+						<input type="text" name="txt_endereco" class="form-control" value="<%= @endereco %>" >
+				  </div>
+				</div>
+
+				<div class="hr-line-dashed"></div>
+
+				<div class="form-group">
+				  <label class="col-md-2 control-label">Município:</label>
+				  <div class="col-md-10">
+						<input type="text" name="txt_municipio" class="form-control" value="<%= @municipio %>" >
+				  </div>
+				</div>
+
+				<div class="hr-line-dashed"></div>         
+
+				<div class="form-group">
+				  <label class="col-md-2 control-label">UF:</label>
+				  <div class="col-md-10">
+						<input type="text" name="txt_uf" class="form-control" value="<%= @uf %>" >
+				  </div>
+				</div>
+
+				<div class="hr-line-dashed"></div>        
+
+				<div class="form-group">
+				  <label class="col-md-2 control-label">Nr. Recibo:</label>
+				  <div class="col-md-10">
+						<input type="text" name="txt_nr_recibo" class="form-control" value="<%= @nr_recibo %>" >
+				  </div>
+				</div>
+
+				<div class="hr-line-dashed"></div>      
+
+				<div class="form-group">
+				  <label class="col-md-2 control-label">Id:</label>
+				  <div class="col-md-10">
+						<input type="text" name="txt_id" class="form-control" value="<%= @id %>" >
+				  </div>
+				</div>
+ 			</fieldset>
+			<div class="hr-line-dashed"></div>                                  
+		</div>
+	 </div>
+<% end %>

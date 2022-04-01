@@ -1,0 +1,84 @@
+<%- model_class = Empresa -%>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-content">
+                <p id="notice"><%= notice %></p>
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <div class="col-md-2 control-label">
+                             <%= model_class.human_attribute_name(:cpf_cnpj) %>:
+                        </div>
+                        <div class="col-md-10">
+                            <label class="form-control">
+                                <%= @empresa.cpf_cnpj %>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="hr-line-dashed"></div>
+
+                                    <div class="form-group">
+                        <div class="col-md-2 control-label">
+                             <%= model_class.human_attribute_name(:pessoa_fisica) %>:
+                        </div>
+                        <div class="col-md-10">
+                            <label class="form-control">
+                                <%= @empresa.pessoa_fisica %>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="hr-line-dashed"></div>
+
+                                    <div class="form-group">
+                        <div class="col-md-2 control-label">
+                             <%= model_class.human_attribute_name(:nome) %>:
+                        </div>
+                        <div class="col-md-10">
+                            <label class="form-control">
+                                <%= @empresa.nome %>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="hr-line-dashed"></div>
+
+                                    <div class="form-group">
+                        <div class="col-md-2 control-label">
+                             <%= model_class.human_attribute_name(:caminho_certificado) %>:
+                        </div>
+                        <div class="col-md-10">
+                            <label class="form-control">
+                                <%= @empresa.caminho_certificado %>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="hr-line-dashed"></div>
+
+                                    <div class="form-group">
+                        <div class="col-md-2 control-label">
+                             <%= model_class.human_attribute_name(:senha_certificado) %>:
+                        </div>
+                        <div class="col-md-10">
+                            <label class="form-control">
+                                <%= @empresa.senha_certificado %>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="hr-line-dashed"></div>
+
+                                <div class="form-group">
+                    <div class="col-sm-4">
+                        <%= link_to edit_empresa_path(@empresa), class: 'btn btn-primary' do %>
+                        Editar
+                        <% end %>
+                        <%= link_to 'Voltar', empresas_path, :class => 'btn btn-white' %>
+                        <%= link_to 'Novo', new_empresa_path, :class => 'btn btn-warning' %>
+
+                    </div>
+                </div>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>

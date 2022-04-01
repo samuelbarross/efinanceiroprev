@@ -1,0 +1,92 @@
+<%- model_class = User -%>
+<%= nested_form_for(@control_user, html: { class: "form-horizontal", role: "form", name: "form"  }) do |f| %>
+  <% if @control_user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@control_user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @control_user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="ibox-content">
+      <form method="get" class="form-horizontal">
+          <div class="form-group">
+            <%= f.label :email, class: "col-md-2 control-label" %>
+            <div class="col-md-10">
+                <%#= f.text_field :email, class: "form-control", readonly: true %>
+                <%= f.text_field :email, class: "form-control" %>
+            </div>
+          </div>
+          <div class="form-group">
+            <%= f.label :role, class: "col-md-2 control-label" %>
+            <div class="col-md-10">
+                <%= f.select :role, User.roles.keys, {}, { class: "form-control", required:true } %>
+            </div>
+          </div>     
+            <div class="hr-line-dashed"></div>
+
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="panel blank-panel">
+                  <div class="panel-heading">
+                    <div class="panel-options">
+                      <ul class="nav nav-tabs">
+                        <li class="active"><a data-toggle="tab" href="#tab-1">Empresas</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="panel-body">
+                    <div class="tab-content">
+                      <div id="tab-1" class="tab-pane active">
+                          <table class="table table-bordered">
+                            <thead>
+                              <tr>
+                                <th width="10%"><%= f.link_to_add "Adicionar", :usuario_empresas, class: "btn btn-primary insert_in_table" %></th>
+                                <th width="30%">Empresa</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <%= f.fields_for :usuario_empresas, :wrapper => false do|ff| %>
+                                <tr class="fields">
+                                  <td><%= ff.link_to_remove "Excluir", :class => 'btn btn-white' %></td>
+                                  <td><%= ff.collection_select :empresa_id, Empresa.all.order(:nome), :id, :nome, {prompt: "Selecione"}, {class: "form-control"} %></td>                                  
+                                </tr>
+                              <% end %>
+                            </tbody>
+                          </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+         <div class="form-group">
+            <div class="col-sm-4">
+            <%= f.submit "Salvar", :class => 'btn btn-primary' %>
+            <%= link_to 'Voltar', users_path, :class => 'btn btn-white' %>
+          </div>
+      </form>      
+    </div>    
+  </div>    
+  </br>                    
+<% end %>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    window.NestedFormEvents.prototype.insertFields = function(content, assoc, link) {
+      if($(link).hasClass('insert_in_table')){
+        var $tr = $(link).closest('table').find('tbody').append(content);
+        return $tr;
+      }
+      else{
+        return $(content).insertBefore(link);
+      }
+    };
+  });
+</script>

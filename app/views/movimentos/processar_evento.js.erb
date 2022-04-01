@@ -1,0 +1,11 @@
+<% if @msg %>
+	toastr["<%= @status %>"]("<%=j @msg %>");
+<% end %>
+<% if @enviado %>
+	$('<%= "#botao-precessar-evento-#{@movimento.id}" %>').html('<%=j render("movimentos/botao_processar_evento", movimento: @movimento) %>');
+	$('<%= "#botao-download-xml-#{@movimento.id}" %>').html('<%=j render("movimentos/botao_download_xml", movimento: @movimento) %>');
+	$("<%= "#movimento_#{@movimento.id}" %>").find(".check-processar").html("<%=j content_tag(:i, nil, class: "fa fa-check") %>");
+	$("<%= "#movimento_#{@movimento.id}" %>").find(".data_arquivo_retorno").html("<%= "#{@movimento.data_arquivo_retorno}" %>");
+	$("<%= "#movimento_#{@movimento.id}" %>").find(".nr_recibo").html("<%= "#{@movimento.nr_recibo}" %>");
+	$("<%= "#movimento_#{@movimento.id}" %>").find(".nr_recibo_referencia").html("<%= "#{@movimento.nr_recibo_referencia}" %>");
+<% end %>

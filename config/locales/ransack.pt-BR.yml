@@ -1,0 +1,70 @@
+pt-BR:
+ ransack:
+   all: todos
+   and: e
+   any: qualquer
+   asc: ascendente
+   attribute: atributo
+   combinator: combinador
+   condition: condição
+   desc: descendente
+   or: ou
+   predicate: predicado
+   predicates:
+     blank: em branco
+     cont: contém
+     cont_all: contém todos
+     cont_any: contém qualquer
+     does_not_match: não corresponde
+     does_not_match_all: não corresponde à todos
+     does_not_match_any: não corresponde à qualquer
+     end: termina em
+     end_all: termina em todos
+     end_any: termina em qualquer
+     eq: igual
+     eq_all: igual à todos
+     eq_any: igual à qualquer
+     'false': "é falso"
+     gt: maior que
+     gt_all: maior que todos
+     gt_any: maior que qualquer
+     gteq: maior ou igual a
+     gteq_all: maior ou igual a todos
+     gteq_any: maior ou igual a qualquer
+     in: em
+     in_all: em todos
+     in_any: em qualquer
+     lt: menor que
+     lt_all: menor que todos
+     lt_any: menor que qualquer
+     lteq: menor ou igual a
+     lteq_all: menor ou igual a todos
+     lteq_any: menor ou igual a qualquer
+     matches: corresponde a
+     matches_all: corresponde à todos
+     matches_any: corresponde à qualquer
+     not_cont: não contém
+     not_cont_all: não contém todos
+     not_cont_any: não contém qualquer
+     not_end: não termina em
+     not_end_all: não termina em todos
+     not_end_any: não termina em qualquer
+     not_eq: diferente de
+     not_eq_all: diferente de todos
+     not_eq_any: diferente de qualquer
+     not_in: não está em
+     not_in_all: não está em todos
+     not_in_any: não está em qualquer
+     not_null: não é nulo
+     not_start: não começa com
+     not_start_all: não começa com todos
+     not_start_any: não começa com qualquer
+     'null': "é nulo"
+     present: está presente
+     start: começa com
+     start_all: começa com todos
+     start_any: começa com qualquer
+     'true': "é verdadeiro"
+   search: procurar
+   sort: ordenar
+   value: valor

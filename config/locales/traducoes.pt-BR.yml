@@ -1,0 +1,28 @@
+"pt-BR":
+  mensagens:
+    password: "Senha"
+    email: "e-mail"
+    forgot_password: "Esqueceu a senha"
+    sign_up: "Nova Conta"
+    sign_in: "Entrar"
+    sign_out: "Sair"
+    novo_login: "Criar nova conta de usuário"
+    name: "Nome"
+    confirm_password: "Confirmar senha"
+    already_have_an_account: "Conta já existe"
+    edit_account: "Editar conta"
+    Users: "Usuários"
+    home: "Home"
+    new_password: "Nova senha"
+    confirm_new_password: "Confirmar nova senha"
+    change_my_password: "Alterar minha senha"
+    current_password: "Senha atual"
+    cancel_my_account: "Cancelar minha conta"
+    are_you_sure: "Tem certeza"
+    reset_password: "Trocar senha"
+    update: "Atualizar"
+  pundit:
+    default: 'Você não tem permissão para realizar esta ação'
+    post_policy:
+     update?: 'Você tem permissão para editar!'
+     create?: 'Você tem permissão para incluir!'

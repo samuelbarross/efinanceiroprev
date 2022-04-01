@@ -1,0 +1,40 @@
+<%%- model_class = <%= singular_table_name.camelize  %> -%>
+<%%= simple_form_for(@<%= singular_table_name %>, html: { class: "form-horizontal", role: "form", name: "form"  }) do |f| %>
+  <%% if @<%= singular_table_name %>.errors.any? %>
+    <div id="error_explanation">
+      <h2><%%= pluralize(@<%= singular_table_name %>.errors.count, "error") %> prohibited this <%= singular_table_name %> from being saved:</h2>
+      <ul>
+      <%% @<%= singular_table_name %>.errors.full_messages.each do |msg| %>
+        <li><%%= msg %></li>
+      <%% end %>
+      </ul>
+    </div>
+  <%% end %>
+  <div class="row">
+    <div class="ibox-content">
+      <form method="get" class="form-horizontal">
+        <%- attributes.each do |attribute| -%>
+          <div class="form-group">
+            <%%= f.label :<%= attribute.column_name %>, class: "col-md-2 control-label" %>
+            <div class="col-md-10">
+              <%- if attribute.reference? -%>
+                <%%= f.select :<%= attribute.column_name %>, options_from_collection_for_select(@nome_modelo, :id, :nome,:selected =>@<%= singular_table_name %>.<%= attribute.column_name %> ), {:prompt => '*** Selecione ***'}, { :class => "form-control" } %>
+            <%- else -%>
+                <%%= f.<%= attribute.field_type %> :<%= attribute.name %>, class: "form-control" %>
+            <%- end -%>
+            </div>
+          </div>
+          <div class="hr-line-dashed"></div>
+        <%- end -%>
+
+        <div class="form-group">
+          <div class="col-sm-4">
+            <%%= f.submit "Salvar", :class => 'btn btn-primary' %>
+            <%%= link_to 'Voltar', <%= index_helper %>_path, :class => 'btn btn-white' %>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <br />
+<%% end %>

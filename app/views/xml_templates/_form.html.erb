@@ -1,0 +1,56 @@
+<%- model_class = XmlTemplate -%>
+<%= form_for(@xml_template, html: { class: "form-horizontal", role: "form", name: "form"  }) do |f| %>
+  <% if @xml_template.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@xml_template.errors.count, "error") %> prohibited this configuração from being saved:</h2>
+      <ul>
+      <% @xml_template.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="row">
+    <div class="ibox-content">
+      <form method="get" class="form-horizontal">
+          <div class="form-group">
+            <%= f.label :evento, class: "col-md-2 control-label" %>
+            <div class="col-md-10">
+                <%= f.text_field :evento, class: "form-control", required: true %>
+            </div>
+          </div>
+          <div class="hr-line-dashed"></div>
+          <div class="form-group">
+            <%= f.label :descricao, class: "col-md-2 control-label" %>
+            <div class="col-md-10">
+                <%= f.text_field :descricao, class: "form-control", required: true %>
+            </div>
+          </div>
+          <div class="hr-line-dashed"></div>
+          <div class="form-group">
+            <%= f.label :url_web_service_pre_producao, class: "col-md-2 control-label" %>
+            <div class="col-md-10">
+                <%= f.text_area :url_web_service_pre_producao, class: "form-control", required: true %>
+            </div>
+          </div>
+
+          <div class="hr-line-dashed"></div>
+
+          <div class="form-group">
+            <%= f.label :url_web_service_producao, class: "col-md-2 control-label" %>
+            <div class="col-md-10">
+                <%= f.text_area :url_web_service_producao, class: "form-control", required: true %>
+            </div>
+          </div>
+
+        <div class="form-group">
+          <div class="col-sm-4">
+            <%= f.submit "Salvar", :class => 'btn btn-primary' %>
+            <%= link_to 'Voltar', xml_templates_path, :class => 'btn btn-white' %>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <br />
+<% end %>

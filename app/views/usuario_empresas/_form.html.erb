@@ -1,0 +1,41 @@
+<%- model_class = UsuarioEmpresa -%>
+<%= simple_form_for(@usuario_empresa, html: { class: "form-horizontal", role: "form", name: "form"  }) do |f| %>
+  <% if @usuario_empresa.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@usuario_empresa.errors.count, "error") %> prohibited this usuario_empresa from being saved:</h2>
+      <ul>
+      <% @usuario_empresa.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="row">
+    <div class="ibox-content">
+      <form method="get" class="form-horizontal">
+          <div class="form-group">
+            <%= f.label :user_id, class: "col-md-2 control-label" %>
+            <div class="col-md-10">
+                <%= f.select :user_id, options_from_collection_for_select(@nome_modelo, :id, :nome,:selected =>@usuario_empresa.user_id ), {:prompt => '*** Selecione ***'}, { :class => "form-control" } %>
+            </div>
+          </div>
+          <div class="hr-line-dashed"></div>
+          <div class="form-group">
+            <%= f.label :empresa_id, class: "col-md-2 control-label" %>
+            <div class="col-md-10">
+                <%= f.select :empresa_id, options_from_collection_for_select(@nome_modelo, :id, :nome,:selected =>@usuario_empresa.empresa_id ), {:prompt => '*** Selecione ***'}, { :class => "form-control" } %>
+            </div>
+          </div>
+          <div class="hr-line-dashed"></div>
+
+        <div class="form-group">
+          <div class="col-sm-4">
+            <%= f.submit "Salvar", :class => 'btn btn-primary' %>
+            <%= link_to 'Voltar', usuario_empresas_path, :class => 'btn btn-white' %>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <br />
+<% end %>

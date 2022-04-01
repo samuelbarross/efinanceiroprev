@@ -1,0 +1,3 @@
+<% unless movimento.arquivo_retorno then %> 
+	<%= link_to "Enviar", processar_evento_movimentos_path(movimento), method: :post, class: "btn btn-xs", style:"width: 95px;background-color:#CE5602;color:white;", remote: true, data: {disable_with: "Enviando..."}  %> 
+<% end %>

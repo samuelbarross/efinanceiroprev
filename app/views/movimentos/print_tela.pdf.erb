@@ -1,0 +1,92 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<%= wicked_pdf_stylesheet_link_tag "reports" %>
+		<style TYPE="text/css">
+			td {
+				font-family: Arial; font-size: 8pt;
+			}
+			.titulo {
+				font-family: Arial; 
+				font-size: 12pt; 
+				font-weight: bold;
+				text-align: center;
+			}			
+			
+
+			th {
+			    background-color: #4CAF50;
+			    color: white;
+
+			}
+
+
+/*			table, tr, td, th, tbody, thead, tfoot {
+    		page-break-inside: avoid !important;
+			}*/
+
+		</style>
+	</head>
+	<body>
+		<table width="100%" border=0 cellspacing=0 >
+			<tr>
+				<td style="text-align: center;"><br/>E-FINANCEIRO</td>
+			</tr>
+			<tr>
+				<td>
+					<table class="paramentros">
+						<tr>
+							<td>Filtros</td>
+						</tr>
+		    				<%= search_form_for @search do |f| %>
+		    					<%= f.condition_fields do |c| %>
+										<tr>
+											<td>
+												<%= c.attribute_fields do |a| %>
+													<%= a.attribute_select()%>
+												<% end %>
+												<%= c.predicate_select %>
+													<%= c.value_fields do |v| %>
+														<%= v.text_field :value %>
+												<% end %>
+											</td>
+										</tr>
+		    					<% end %>
+							<% end %>
+						</table>
+						</br>
+						<table width="100%" class="table table-condensed table-striped" >
+							<thead style="font-family: Arial; font-size: 8pt;">  
+								<tr>
+									<th>Id</th>
+									<th>Enviado?</th>
+									<th>Evento</th>
+									<th>ID Declarante</th>
+									<th>Ambiente</th>
+									<th>Nr. Recibo</th>
+									<th>Nr. Recibo Referência</th>
+									<th>Data Importação</th>
+									<th>Data Retorno</th>
+								</tr>
+							</thead>
+							<tbody>
+			      		<%= content_tag_for(:tr, @movimentos) do |m| %>
+									<td style="text-align: center;"><%= m.id %></td>
+									<td style="text-align: center;"><% if m.arquivo_retorno.presence then %>ok<% end %></td>
+									<td><%= m.xml_template.evento %></td>
+									<td><%= m.id_declarante %></td>
+									<td style="text-align: center;"><%= m.tipo_ambiente %></td>
+									<td><%= m.nr_recibo %></td>
+									<td><%= m.nr_recibo_referencia %></td>
+									<td style="text-align: center;"><%= m.created_at.strftime("%Y-%m-%d") %></td>
+									<td style="text-align: center;"><% if m.data_arquivo_retorno.presence then %><%= m.data_arquivo_retorno.strftime("%Y-%m-%d") %><% end %></td>
+								<% end %>
+							</tbody>
+						</table>						
+				</td>
+			</tr>
+		</table>
+	</body>
+</html>
+

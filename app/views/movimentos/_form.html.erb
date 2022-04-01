@@ -1,0 +1,34 @@
+<%= form_for(@movimento, html: { class: "form-horizontal", role: "form", name: "form"  }) do |f| %>
+  <% if @movimento.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@movimento.errors.count, "error") %> movimento não pode ser salvo:</h2>
+      <ul>
+      <% @movimento.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="row">
+    <div class="ibox-content">
+      <form method="get" class="form-horizontal">
+          <div class="form-group">
+            <%= f.label :arquivo_origem, class: "col-md-2 control-label" %>
+            <div class="col-md-10">
+                <%= f.text_area :arquivo_origem, class: "form-control", required: true %>
+            </div>
+          </div>
+
+          <div class="hr-line-dashed"></div>
+
+        <div class="form-group">
+          <div class="col-sm-4">
+            <%= f.submit "Salvar", :class => 'btn btn-primary' %>
+            <%= link_to 'Voltar', movimentos_path, :class => 'btn btn-white' %>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <br />
+<% end %>

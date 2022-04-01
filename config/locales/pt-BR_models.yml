@@ -1,0 +1,30 @@
+"pt-BR":
+  activerecord:
+    models:
+      xml_template: "Templates"
+      user: "Usuário"
+      movimento: "Movimentos"
+      empresa: "Empresas"
+    attributes:
+      xml_template:
+        evento: "Evento"
+        descricao: "Descrição"
+        user_id: "Usuário"
+        created_at: "Data Registro"
+        url_web_service_pre_producao: "Web Service Pré-Prod"
+        url_web_service_producao: "Web Service Produção"
+      movimento:
+        arquivo_origem: "Arquivo de Origem"
+        created_at: "Data Importação"
+        arquivo_retorno: "Retorno"
+        data_arquivo_retorno: "Data Retorno"
+        xml_template_id: "Evento"
+        user_id: "Usuário"
+        nr_recibo: "Nr. Recibo"
+        nr_recibo_referencia: "Nr. Recibo Referência"
+        tipo_ambiente: "Ambiente"
+      empresa:
+        cpf_cnpj: "CNPJ / CPF"
+        pessoa_fisica: "Pessoa Física?"
+        caminho_certificado: "Caminho Certificado"
+        senha_certificado: "Senha Certificado"
